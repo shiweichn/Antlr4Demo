@@ -30,6 +30,18 @@ public interface CalcListener extends ParseTreeListener {
 	 */
 	void exitPrintExpr(CalcParser.PrintExprContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code null}
+	 * labeled alternative in {@link CalcParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterNull(CalcParser.NullContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code null}
+	 * labeled alternative in {@link CalcParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitNull(CalcParser.NullContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code assign}
 	 * labeled alternative in {@link CalcParser#stat}.
 	 * @param ctx the parse tree

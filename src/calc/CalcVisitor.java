@@ -24,6 +24,13 @@ public interface CalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrintExpr(CalcParser.PrintExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code null}
+	 * labeled alternative in {@link CalcParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNull(CalcParser.NullContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code assign}
 	 * labeled alternative in {@link CalcParser#stat}.
 	 * @param ctx the parse tree

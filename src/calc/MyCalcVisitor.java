@@ -12,8 +12,9 @@ public class MyCalcVisitor extends CalcBaseVisitor<Integer> {
 	Map<String, Integer> memory = new HashMap<>();
 
 	@Override
-	public Integer visitProg(ProgContext ctx) {
-		return super.visitProg(ctx);
+	public Integer visitNull(NullContext ctx) {
+		memory.clear();
+		return 0;
 	}
 
 	@Override
@@ -32,32 +33,42 @@ public class MyCalcVisitor extends CalcBaseVisitor<Integer> {
 	}
 
 	@Override
-	public Integer visitBlank(BlankContext ctx) {
-		return super.visitBlank(ctx);
-	}
-
-	@Override
 	public Integer visitParens(ParensContext ctx) {
-		return super.visitParens(ctx);
+		return visit(ctx.expr());    // 返回子表达式的值
 	}
 
 	@Override
 	public Integer visitMulDiv(MulDivContext ctx) {
-		return super.visitMulDiv(ctx);
+		final Integer left = visit(ctx.expr(0));// 计算左侧表达式的值
+		final Integer right = visit(ctx.expr(1));// 计算右侧表达式的值
+		if (ctx.op.getType() == CalcParser.MUL)
+			return left * right;
+		else
+			return left / right;
 	}
 
 	@Override
 	public Integer visitAddSub(AddSubContext ctx) {
-		return super.visitAddSub(ctx);
+		final Integer left = visit(ctx.expr(0));
+		final Integer right = visit(ctx.expr(1));
+
+		if (ctx.op.getType() == CalcParser.ADD)
+			return left + right;
+		else
+			return left - right;
 	}
 
 	@Override
 	public Integer visitId(IdContext ctx) {
-		return super.visitId(ctx);
+		final String id = ctx.ID().getText();
+		if (memory.containsKey(id))
+			return memory.get(id);
+		else
+			return 0;
 	}
 
 	@Override
 	public Integer visitInt(IntContext ctx) {
-		return super.visitInt(ctx);
+		return Integer.parseInt(ctx.INT().getText());
 	}
 }

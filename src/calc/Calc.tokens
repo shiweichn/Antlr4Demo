@@ -7,8 +7,9 @@ LPAREN=6
 RPAREN=7
 ID=8
 INT=9
-NEWLINE=10
-WS=11
+NULL=10
+NEWLINE=11
+WS=12
 '='=1
 '*'=2
 '/'=3
@@ -16,3 +17,4 @@ WS=11
 '-'=5
 '('=6
 ')'=7
+'$'=10

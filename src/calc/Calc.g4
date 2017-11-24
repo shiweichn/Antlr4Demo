@@ -4,12 +4,13 @@ grammar Calc ;
 prog: stat+ ;
 
 stat: expr NEWLINE          # printExpr
+    | NULL                  # null
     | ID '=' expr NEWLINE   # assign
     | NEWLINE               # blank
     ;
 
-expr: expr ('*'|'/') expr   # MulDiv
-    | expr ('+'|'-') expr   # AddSub
+expr: expr op=('*'|'/') expr   # MulDiv
+    | expr op=('+'|'-') expr   # AddSub
     | INT                   # int
     | ID                    # id
     | '(' expr ')'          # parens
@@ -25,6 +26,7 @@ RPAREN : ')' ;
 
 ID  : [a-zA-z]+ ;   // 匹配标识符
 INT : [0-9]+    ;   // 匹配整数
+NULL: '$';
 NEWLINE : '\r'? '\n' ; // 告诉语法分析器一个新行的开始(即语句终止标志)
 WS  : [ \t]+ -> skip ; // 丢弃空白字符
 

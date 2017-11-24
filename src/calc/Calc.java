@@ -18,7 +18,7 @@ public class Calc {
 		final CalcParser parser = new CalcParser(tokens);
 
 		ParseTree tree = parser.prog();
-		final CalcBaseVisitor<Object> visitor = new CalcBaseVisitor<>();
+		final MyCalcVisitor visitor = new MyCalcVisitor();
 		visitor.visit(tree);
 
 	}

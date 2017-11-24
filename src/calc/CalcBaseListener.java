@@ -40,6 +40,18 @@ public class CalcBaseListener implements CalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNull(CalcParser.NullContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNull(CalcParser.NullContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAssign(CalcParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
