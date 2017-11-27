@@ -1,29 +1,46 @@
 grammar CGame;
+import CGameLexerRules;
 
-prog: expression+ ;
+prog: expression+;
 
-expression: method ('.' method)*        // 匹配表达式
-        | expression op=('*'|'/') expression
-        | expression op=('+'|'-') expression
-        | INT
-        | FLOAT
-        ;
+expression  :
+            function ('.' function)*                        # func              // 匹配函数链式调用表达式
+            | '(' expression ')'                            # parens
+            | expression op=('*'|'/') expression            # MulDiv
+            | expression op=('+'|'-') expression            # AddSub
+            | expression op=('>'|'<'|'>='|'<=') expression  # GtLtGtFt
+            | expression op=('==' | '!=') expression        # eqOrne
+            | expression '?' expression ':' expression ';'* # ternaryOpt        // 匹配三目运算
+            | expression NEWLINE                            # print
+            | declare                                       # decl
+            | number                                        # num
+            | ID                                            # id
+            ;
 
-method  : ID '(' args (',' args)* ')'; // 匹配方法
-args    : method
-        | ID
-        | INT
-        | FLOAT
-        |
-        ;
+declare     : ID '=' '('* expression ')'* ';' ;                                 // 匹配变量声明
 
-ID  : [a-zA-z]+ ;                     // 匹配标识符
-FLOAT                                 // 匹配浮点数
-    :   '-'? INT '.' INT EXP?   // 1.35, 1.35E-9, 0.3, -4.5
-    |   '-'? INT EXP            // 1e10 -3e4
-    |   '-'? INT                // -3, 45
-    ;
+function    : ID '(' ( parameter (',' parameter)* )? ')';                       // 匹配函数以及参数
 
-INT :   '0' | [1-9] [0-9]* ;        // 匹配整数
-EXP :   [Ee] [+\-]? INT ;
+parameter   : function
+            | number
+            | ID
+            ;
 
+number      : INT                                           # int
+            | FLOAT                                         # float
+            ;
+
+INT         : [0-9]+ ;
+BOOL        : 'TRUE' | 'FALSE';
+FLOAT       : INT '.' INT EXP?   // 1.35, 1.35E-9, 0.3, -4.5
+            | INT EXP            // 1e10 -3e4
+            | INT                // -3, 45
+            ;
+
+fragment EXP :   [Ee] [+\-]? INT ;
+
+ID  : [a-zA-z]+[0-9]* ;                     // 匹配标识符
+
+
+NEWLINE : '\r'? '\n' ; // 告诉语法分析器一个新行的开始(即语句终止标志)
+WS  : [ \t]+ -> channel(HIDDEN) ;
