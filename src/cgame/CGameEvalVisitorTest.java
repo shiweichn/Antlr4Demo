@@ -18,7 +18,9 @@ public class CGameEvalVisitorTest {
 //		final CodePointCharStream stream = CharStreams.fromString("1==1?2:3\n");
 //		final CodePointCharStream stream = CharStreams.fromString("((1+1)*2+1)/(3+2)==1?1.5*2:((1+1)*2+1)/(3+2)\n");
 //		final CodePointCharStream stream = CharStreams.fromString("list()");
-		final CodePointCharStream stream = CharStreams.fromString("1+list().count()*list().count()");
+//		final CodePointCharStream stream = CharStreams.fromString("1+list().count()*list().count()");
+//		final CodePointCharStream stream = CharStreams.fromString("a=list().count()==4?list():9");
+		final CodePointCharStream stream = CharStreams.fromString("a=1!=1;b=2;c=3;a?b:c");
 		final CGameLexer lexer = new CGameLexer(stream);
 		final CommonTokenStream tokens = new CommonTokenStream(lexer);
 		final CGameParser parser = new CGameParser(tokens);

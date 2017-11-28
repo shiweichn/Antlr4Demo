@@ -125,7 +125,8 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 
 	@Override
 	public Object visitId(IdContext ctx) {
-		return super.visitId(ctx);
+		final String id = ctx.ID().getText();
+		return map.containsKey(id) ? map.get(id) : new Object();
 	}
 
 	@Override
@@ -150,7 +151,9 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 
 	@Override
 	public Object visitDeclare(DeclareContext ctx) {
-		return super.visitDeclare(ctx);
+		final Object result = visit(ctx.expression());
+		map.put(ctx.ID().getText(), result);
+		return result;
 	}
 
 	@Override
