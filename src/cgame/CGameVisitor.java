@@ -31,13 +31,6 @@ public interface CGameVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParens(CGameParser.ParensContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code print}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPrint(CGameParser.PrintContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code func}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
@@ -73,6 +66,13 @@ public interface CGameVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNum(CGameParser.NumContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code GtLtGeLe}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code ternaryOpt}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
@@ -86,13 +86,6 @@ public interface CGameVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitId(CGameParser.IdContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code GtLtGtFt}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitGtLtGtFt(CGameParser.GtLtGtFtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link CGameParser#declare}.
 	 * @param ctx the parse tree

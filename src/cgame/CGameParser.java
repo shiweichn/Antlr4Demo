@@ -199,26 +199,6 @@ public class CGameParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class PrintContext extends ExpressionContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public TerminalNode NEWLINE() { return getToken(CGameParser.NEWLINE, 0); }
-		public PrintContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CGameListener ) ((CGameListener)listener).enterPrint(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CGameListener ) ((CGameListener)listener).exitPrint(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CGameVisitor ) return ((CGameVisitor<? extends T>)visitor).visitPrint(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class FuncContext extends ExpressionContext {
 		public List<FunctionContext> function() {
 			return getRuleContexts(FunctionContext.class);
@@ -325,6 +305,29 @@ public class CGameParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class GtLtGeLeContext extends ExpressionContext {
+		public Token op;
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public GtLtGeLeContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CGameListener ) ((CGameListener)listener).enterGtLtGeLe(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CGameListener ) ((CGameListener)listener).exitGtLtGeLe(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CGameVisitor ) return ((CGameVisitor<? extends T>)visitor).visitGtLtGeLe(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class TernaryOptContext extends ExpressionContext {
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
@@ -361,29 +364,6 @@ public class CGameParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof CGameVisitor ) return ((CGameVisitor<? extends T>)visitor).visitId(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class GtLtGtFtContext extends ExpressionContext {
-		public Token op;
-		public List<ExpressionContext> expression() {
-			return getRuleContexts(ExpressionContext.class);
-		}
-		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
-		}
-		public GtLtGtFtContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CGameListener ) ((CGameListener)listener).enterGtLtGtFt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CGameListener ) ((CGameListener)listener).exitGtLtGtFt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CGameVisitor ) return ((CGameVisitor<? extends T>)visitor).visitGtLtGtFt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -477,7 +457,7 @@ public class CGameParser extends Parser {
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(62);
+			setState(57);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -485,7 +465,7 @@ public class CGameParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(60);
+					setState(55);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 					case 1:
@@ -493,7 +473,7 @@ public class CGameParser extends Parser {
 						_localctx = new MulDivContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(35);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
 						setState(36);
 						((MulDivContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -506,7 +486,7 @@ public class CGameParser extends Parser {
 							consume();
 						}
 						setState(37);
-						expression(10);
+						expression(9);
 						}
 						break;
 					case 2:
@@ -514,7 +494,7 @@ public class CGameParser extends Parser {
 						_localctx = new AddSubContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(38);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
 						setState(39);
 						((AddSubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -527,20 +507,20 @@ public class CGameParser extends Parser {
 							consume();
 						}
 						setState(40);
-						expression(9);
+						expression(8);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new GtLtGtFtContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new GtLtGeLeContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(41);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
 						setState(42);
-						((GtLtGtFtContext)_localctx).op = _input.LT(1);
+						((GtLtGeLeContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GT) | (1L << LT) | (1L << GE) | (1L << LE))) != 0)) ) {
-							((GtLtGtFtContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+							((GtLtGeLeContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
 							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
@@ -548,7 +528,7 @@ public class CGameParser extends Parser {
 							consume();
 						}
 						setState(43);
-						expression(8);
+						expression(7);
 						}
 						break;
 					case 4:
@@ -556,7 +536,7 @@ public class CGameParser extends Parser {
 						_localctx = new EqOrneContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(44);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(45);
 						((EqOrneContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
@@ -569,7 +549,7 @@ public class CGameParser extends Parser {
 							consume();
 						}
 						setState(46);
-						expression(7);
+						expression(6);
 						}
 						break;
 					case 5:
@@ -577,7 +557,7 @@ public class CGameParser extends Parser {
 						_localctx = new TernaryOptContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(47);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(48);
 						match(QUESTION);
 						setState(49);
@@ -586,38 +566,22 @@ public class CGameParser extends Parser {
 						match(COLON);
 						setState(51);
 						expression(0);
-						setState(55);
+						setState(53);
 						_errHandler.sync(this);
-						_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-						while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-							if ( _alt==1 ) {
-								{
-								{
-								setState(52);
-								match(SEMI);
-								}
-								} 
+						switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+						case 1:
+							{
+							setState(52);
+							match(SEMI);
 							}
-							setState(57);
-							_errHandler.sync(this);
-							_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+							break;
 						}
-						}
-						break;
-					case 6:
-						{
-						_localctx = new PrintContext(new ExpressionContext(_parentctx, _parentState));
-						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(58);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(59);
-						match(NEWLINE);
 						}
 						break;
 					}
 					} 
 				}
-				setState(64);
+				setState(59);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			}
@@ -666,43 +630,43 @@ public class CGameParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65);
+			setState(60);
 			match(ID);
-			setState(66);
+			setState(61);
 			match(EQUAL);
-			setState(70);
+			setState(65);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(67);
+					setState(62);
 					match(LPAREN);
 					}
 					} 
 				}
-				setState(72);
+				setState(67);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
-			setState(73);
+			setState(68);
 			expression(0);
-			setState(77);
+			setState(72);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==RPAREN) {
 				{
 				{
-				setState(74);
+				setState(69);
 				match(RPAREN);
 				}
 				}
-				setState(79);
+				setState(74);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(80);
+			setState(75);
 			match(SEMI);
 			}
 		}
@@ -751,37 +715,37 @@ public class CGameParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82);
+			setState(77);
 			match(ID);
-			setState(83);
+			setState(78);
 			match(LPAREN);
-			setState(92);
+			setState(87);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << FLOAT) | (1L << ID))) != 0)) {
 				{
-				setState(84);
+				setState(79);
 				parameter();
-				setState(89);
+				setState(84);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(85);
+					setState(80);
 					match(COMMA);
-					setState(86);
+					setState(81);
 					parameter();
 					}
 					}
-					setState(91);
+					setState(86);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
 				}
 			}
 
-			setState(94);
+			setState(89);
 			match(RPAREN);
 			}
 		}
@@ -827,27 +791,27 @@ public class CGameParser extends Parser {
 		ParameterContext _localctx = new ParameterContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_parameter);
 		try {
-			setState(99);
+			setState(94);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(96);
+				setState(91);
 				function();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(97);
+				setState(92);
 				number();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(98);
+				setState(93);
 				match(ID);
 				}
 				break;
@@ -914,14 +878,14 @@ public class CGameParser extends Parser {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_number);
 		try {
-			setState(103);
+			setState(98);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INT:
 				_localctx = new IntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(101);
+				setState(96);
 				match(INT);
 				}
 				break;
@@ -929,7 +893,7 @@ public class CGameParser extends Parser {
 				_localctx = new FloatContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(102);
+				setState(97);
 				match(FLOAT);
 				}
 				break;
@@ -958,50 +922,47 @@ public class CGameParser extends Parser {
 	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 9);
-		case 1:
 			return precpred(_ctx, 8);
-		case 2:
+		case 1:
 			return precpred(_ctx, 7);
-		case 3:
+		case 2:
 			return precpred(_ctx, 6);
-		case 4:
+		case 3:
 			return precpred(_ctx, 5);
-		case 5:
+		case 4:
 			return precpred(_ctx, 4);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\32l\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\32g\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\6\2\20\n\2\r\2\16\2\21\3\3\3\3"+
 		"\3\3\3\3\7\3\30\n\3\f\3\16\3\33\13\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3$"+
 		"\n\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\3\7\38\n\3\f\3\16\3;\13\3\3\3\3\3\7\3?\n\3\f\3\16\3B\13\3\3\4\3\4"+
-		"\3\4\7\4G\n\4\f\4\16\4J\13\4\3\4\3\4\7\4N\n\4\f\4\16\4Q\13\4\3\4\3\4\3"+
-		"\5\3\5\3\5\3\5\3\5\7\5Z\n\5\f\5\16\5]\13\5\5\5_\n\5\3\5\3\5\3\6\3\6\3"+
-		"\6\5\6f\n\6\3\7\3\7\5\7j\n\7\3\7\2\3\4\b\2\4\6\b\n\f\2\6\3\2\n\13\3\2"+
-		"\f\r\3\2\16\21\3\2\22\23\2y\2\17\3\2\2\2\4#\3\2\2\2\6C\3\2\2\2\bT\3\2"+
-		"\2\2\ne\3\2\2\2\fi\3\2\2\2\16\20\5\4\3\2\17\16\3\2\2\2\20\21\3\2\2\2\21"+
-		"\17\3\2\2\2\21\22\3\2\2\2\22\3\3\2\2\2\23\24\b\3\1\2\24\31\5\b\5\2\25"+
-		"\26\7\t\2\2\26\30\5\b\5\2\27\25\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31"+
-		"\32\3\2\2\2\32$\3\2\2\2\33\31\3\2\2\2\34\35\7\30\2\2\35\36\5\4\3\2\36"+
-		"\37\7\31\2\2\37$\3\2\2\2 $\5\6\4\2!$\5\f\7\2\"$\7\6\2\2#\23\3\2\2\2#\34"+
-		"\3\2\2\2# \3\2\2\2#!\3\2\2\2#\"\3\2\2\2$@\3\2\2\2%&\f\13\2\2&\'\t\2\2"+
-		"\2\'?\5\4\3\f()\f\n\2\2)*\t\3\2\2*?\5\4\3\13+,\f\t\2\2,-\t\4\2\2-?\5\4"+
-		"\3\n./\f\b\2\2/\60\t\5\2\2\60?\5\4\3\t\61\62\f\7\2\2\62\63\7\24\2\2\63"+
-		"\64\5\4\3\2\64\65\7\25\2\2\659\5\4\3\2\668\7\26\2\2\67\66\3\2\2\28;\3"+
-		"\2\2\29\67\3\2\2\29:\3\2\2\2:?\3\2\2\2;9\3\2\2\2<=\f\6\2\2=?\7\7\2\2>"+
-		"%\3\2\2\2>(\3\2\2\2>+\3\2\2\2>.\3\2\2\2>\61\3\2\2\2><\3\2\2\2?B\3\2\2"+
-		"\2@>\3\2\2\2@A\3\2\2\2A\5\3\2\2\2B@\3\2\2\2CD\7\6\2\2DH\7\27\2\2EG\7\30"+
-		"\2\2FE\3\2\2\2GJ\3\2\2\2HF\3\2\2\2HI\3\2\2\2IK\3\2\2\2JH\3\2\2\2KO\5\4"+
-		"\3\2LN\7\31\2\2ML\3\2\2\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2\2PR\3\2\2\2QO\3"+
-		"\2\2\2RS\7\26\2\2S\7\3\2\2\2TU\7\6\2\2U^\7\30\2\2V[\5\n\6\2WX\7\32\2\2"+
-		"XZ\5\n\6\2YW\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2\2\2\\_\3\2\2\2][\3\2\2"+
-		"\2^V\3\2\2\2^_\3\2\2\2_`\3\2\2\2`a\7\31\2\2a\t\3\2\2\2bf\5\b\5\2cf\5\f"+
-		"\7\2df\7\6\2\2eb\3\2\2\2ec\3\2\2\2ed\3\2\2\2f\13\3\2\2\2gj\7\3\2\2hj\7"+
-		"\5\2\2ig\3\2\2\2ih\3\2\2\2j\r\3\2\2\2\16\21\31#9>@HO[^ei";
+		"\3\3\3\5\38\n\3\7\3:\n\3\f\3\16\3=\13\3\3\4\3\4\3\4\7\4B\n\4\f\4\16\4"+
+		"E\13\4\3\4\3\4\7\4I\n\4\f\4\16\4L\13\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\7\5"+
+		"U\n\5\f\5\16\5X\13\5\5\5Z\n\5\3\5\3\5\3\6\3\6\3\6\5\6a\n\6\3\7\3\7\5\7"+
+		"e\n\7\3\7\2\3\4\b\2\4\6\b\n\f\2\6\3\2\n\13\3\2\f\r\3\2\16\21\3\2\22\23"+
+		"\2s\2\17\3\2\2\2\4#\3\2\2\2\6>\3\2\2\2\bO\3\2\2\2\n`\3\2\2\2\fd\3\2\2"+
+		"\2\16\20\5\4\3\2\17\16\3\2\2\2\20\21\3\2\2\2\21\17\3\2\2\2\21\22\3\2\2"+
+		"\2\22\3\3\2\2\2\23\24\b\3\1\2\24\31\5\b\5\2\25\26\7\t\2\2\26\30\5\b\5"+
+		"\2\27\25\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32$\3\2\2\2"+
+		"\33\31\3\2\2\2\34\35\7\30\2\2\35\36\5\4\3\2\36\37\7\31\2\2\37$\3\2\2\2"+
+		" $\5\6\4\2!$\5\f\7\2\"$\7\6\2\2#\23\3\2\2\2#\34\3\2\2\2# \3\2\2\2#!\3"+
+		"\2\2\2#\"\3\2\2\2$;\3\2\2\2%&\f\n\2\2&\'\t\2\2\2\':\5\4\3\13()\f\t\2\2"+
+		")*\t\3\2\2*:\5\4\3\n+,\f\b\2\2,-\t\4\2\2-:\5\4\3\t./\f\7\2\2/\60\t\5\2"+
+		"\2\60:\5\4\3\b\61\62\f\6\2\2\62\63\7\24\2\2\63\64\5\4\3\2\64\65\7\25\2"+
+		"\2\65\67\5\4\3\2\668\7\26\2\2\67\66\3\2\2\2\678\3\2\2\28:\3\2\2\29%\3"+
+		"\2\2\29(\3\2\2\29+\3\2\2\29.\3\2\2\29\61\3\2\2\2:=\3\2\2\2;9\3\2\2\2;"+
+		"<\3\2\2\2<\5\3\2\2\2=;\3\2\2\2>?\7\6\2\2?C\7\27\2\2@B\7\30\2\2A@\3\2\2"+
+		"\2BE\3\2\2\2CA\3\2\2\2CD\3\2\2\2DF\3\2\2\2EC\3\2\2\2FJ\5\4\3\2GI\7\31"+
+		"\2\2HG\3\2\2\2IL\3\2\2\2JH\3\2\2\2JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MN\7\26"+
+		"\2\2N\7\3\2\2\2OP\7\6\2\2PY\7\30\2\2QV\5\n\6\2RS\7\32\2\2SU\5\n\6\2TR"+
+		"\3\2\2\2UX\3\2\2\2VT\3\2\2\2VW\3\2\2\2WZ\3\2\2\2XV\3\2\2\2YQ\3\2\2\2Y"+
+		"Z\3\2\2\2Z[\3\2\2\2[\\\7\31\2\2\\\t\3\2\2\2]a\5\b\5\2^a\5\f\7\2_a\7\6"+
+		"\2\2`]\3\2\2\2`^\3\2\2\2`_\3\2\2\2a\13\3\2\2\2be\7\3\2\2ce\7\5\2\2db\3"+
+		"\2\2\2dc\3\2\2\2e\r\3\2\2\2\16\21\31#\679;CJVY`d";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

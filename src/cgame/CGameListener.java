@@ -42,18 +42,6 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitParens(CGameParser.ParensContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code print}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterPrint(CGameParser.PrintContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code print}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitPrint(CGameParser.PrintContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code func}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
@@ -114,6 +102,18 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitNum(CGameParser.NumContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code GtLtGeLe}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GtLtGeLe}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code ternaryOpt}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
@@ -137,18 +137,6 @@ public interface CGameListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitId(CGameParser.IdContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code GtLtGtFt}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterGtLtGtFt(CGameParser.GtLtGtFtContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code GtLtGtFt}
-	 * labeled alternative in {@link CGameParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitGtLtGtFt(CGameParser.GtLtGtFtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CGameParser#declare}.
 	 * @param ctx the parse tree

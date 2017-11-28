@@ -52,18 +52,6 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrint(CGameParser.PrintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPrint(CGameParser.PrintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterFunc(CGameParser.FuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -124,6 +112,18 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTernaryOpt(CGameParser.TernaryOptContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -143,18 +143,6 @@ public class CGameBaseListener implements CGameListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitId(CGameParser.IdContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterGtLtGtFt(CGameParser.GtLtGtFtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitGtLtGtFt(CGameParser.GtLtGtFtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -8,13 +8,13 @@ expression  :
             | '(' expression ')'                            # parens
             | expression op=('*'|'/') expression            # MulDiv
             | expression op=('+'|'-') expression            # AddSub
-            | expression op=('>'|'<'|'>='|'<=') expression  # GtLtGtFt
+            | expression op=('>'|'<'|'>='|'<=') expression  # GtLtGeLe
             | expression op=('==' | '!=') expression        # eqOrne
-            | expression '?' expression ':' expression ';'* # ternaryOpt        // 匹配三目运算
-            | expression NEWLINE                            # print
+            | expression '?' expression ':' expression ';'? # ternaryOpt        // 匹配三目运算
             | declare                                       # decl
             | number                                        # num
             | ID                                            # id
+//            | expression NEWLINE                            # print
             ;
 
 declare     : ID '=' '('* expression ')'* ';' ;                                 // 匹配变量声明
@@ -42,5 +42,5 @@ fragment EXP :   [Ee] [+\-]? INT ;
 ID  : [a-zA-z]+[0-9]* ;                     // 匹配标识符
 
 
-NEWLINE : '\r'? '\n' ; // 告诉语法分析器一个新行的开始(即语句终止标志)
+NEWLINE : '\r'? '\n'? ; // 告诉语法分析器一个新行的开始(即语句终止标志)
 WS  : [ \t]+ -> channel(HIDDEN) ;

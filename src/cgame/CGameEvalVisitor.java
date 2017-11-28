@@ -1,6 +1,11 @@
 package cgame;
 
 import cgame.CGameParser.*;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeProperty;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Sweeney on 2017/11/27.
@@ -9,6 +14,14 @@ import cgame.CGameParser.*;
  * @version 1.0
  */
 public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
+	ParseTreeProperty<Object> treeValues = new ParseTreeProperty<>();
+	private HashMap<String, Object> map = new HashMap<>();
+	private FunctionUtils utils = null;
+
+	public CGameEvalVisitor(FunctionUtils utils) {
+		this.utils = utils;
+	}
+
 	@Override
 	public Object visitProg(ProgContext ctx) {
 		return super.visitProg(ctx);
@@ -16,7 +29,12 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 
 	@Override
 	public Object visitEqOrne(EqOrneContext ctx) {
-		return super.visitEqOrne(ctx);
+		final String left = visit(ctx.expression(0)).toString();
+		final String right = visit(ctx.expression(1)).toString();
+		if (ctx.op.getType() == CGameParser.EQUAL_EQUAL)
+			return Float.parseFloat(left) == Float.parseFloat(right);
+		else
+			return Float.parseFloat(left) != Float.parseFloat(right);
 	}
 
 	@Override
@@ -27,13 +45,6 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 	@Override
 	public Object visitDecl(DeclContext ctx) {
 		return super.visitDecl(ctx);
-	}
-
-	@Override
-	public Object visitPrint(PrintContext ctx) {
-		final Object result = visit(ctx.expression());
-		System.out.println("result:" + result.toString());
-		return result;
 	}
 
 	@Override
@@ -51,11 +62,22 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 	public Object visitMulDiv(MulDivContext ctx) {
 		final String left = visit(ctx.expression(0)).toString();
 		final String right = visit(ctx.expression(1)).toString();
+		if (left.contains(".") || right.contains(".")) {
 
-		if (ctx.op.getType() == CGameLexer.MUL)
-			return Integer.valueOf(left) * Integer.valueOf(right);
-		else
-			return Integer.valueOf(left) / Integer.valueOf(right);
+			if (ctx.op.getType() == CGameLexer.MUL)
+				return Float.valueOf(left) * Float.valueOf(right);
+			else
+				return Float.valueOf(left) / Float.valueOf(right);
+		} else {
+
+			if (ctx.op.getType() == CGameLexer.MUL)
+				return Integer.valueOf(left) * Integer.valueOf(right);
+			else if (Integer.valueOf(left) % Integer.valueOf(right) == 0)
+				return Integer.valueOf(left) / Integer.valueOf(right);
+			else
+				return Float.valueOf(left) / Float.valueOf(right);
+
+		}
 	}
 
 
@@ -69,11 +91,19 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 	public Object visitAddSub(AddSubContext ctx) {
 		final String left = visit(ctx.expression(0)).toString();
 		final String right = visit(ctx.expression(1)).toString();
+		if (left.contains(".") || right.contains(".")) {
 
-		if (ctx.op.getType() == CGameLexer.ADD)
-			return Integer.valueOf(left) + Integer.valueOf(right);
-		else
-			return Integer.valueOf(left) - Integer.valueOf(right);
+			if (ctx.op.getType() == CGameLexer.ADD)
+				return Float.valueOf(left) + Float.valueOf(right);
+			else
+				return Float.valueOf(left) - Float.valueOf(right);
+		} else {
+
+			if (ctx.op.getType() == CGameLexer.ADD)
+				return Integer.valueOf(left) + Integer.valueOf(right);
+			else
+				return Integer.valueOf(left) - Integer.valueOf(right);
+		}
 	}
 
 	@Override
@@ -83,7 +113,14 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 
 	@Override
 	public Object visitTernaryOpt(TernaryOptContext ctx) {
-		return super.visitTernaryOpt(ctx);
+		final Object left = visit(ctx.expression(0));
+		final Object middle = visit(ctx.expression(1));
+		final Object right = visit(ctx.expression(2));
+
+		if (Boolean.parseBoolean(left.toString()))
+			return middle;
+		else
+			return right;
 	}
 
 	@Override
@@ -92,8 +129,23 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 	}
 
 	@Override
-	public Object visitGtLtGtFt(GtLtGtFtContext ctx) {
-		return super.visitGtLtGtFt(ctx);
+	public Object visitGtLtGeLe(GtLtGeLeContext ctx) {
+		final String left = visit(ctx.expression(0)).toString();
+		final String right = visit(ctx.expression(1)).toString();
+		if (ctx.op.getType() == CGameParser.GT) {
+
+			return Float.valueOf(left) > Float.valueOf(right);
+		} else if (ctx.op.getType() == CGameParser.LT) {
+
+			return Float.valueOf(left) < Float.valueOf(right);
+		} else if (ctx.op.getType() == CGameParser.GE) {
+
+			return Float.valueOf(left) >= Float.valueOf(right);
+		} else if (ctx.op.getType() == CGameParser.LE) {
+
+			return Float.valueOf(left) <= Float.valueOf(right);
+		}
+		return false;
 	}
 
 	@Override
@@ -103,6 +155,18 @@ public class CGameEvalVisitor extends CGameBaseVisitor<Object> {
 
 	@Override
 	public Object visitFunction(FunctionContext ctx) {
+		System.out.println("function..." + ctx.getText());
+		if ("list()".equals(ctx.getText())) {
+			final List list = utils.list();
+			treeValues.put(ctx, list);
+			return list;
+		} else if ("count()".equals(ctx.getText())) {
+			final int childCount = ctx.parent.getChildCount();
+			final int listIndex = childCount - 3;
+			final ParseTree child = ctx.parent.getChild(listIndex);
+			final List<String> list = (List<String>) treeValues.get(child);
+			return list.size();
+		}
 		return super.visitFunction(ctx);
 	}
 
