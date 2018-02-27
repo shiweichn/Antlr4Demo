@@ -18,17 +18,17 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitProg(CGameParser.ProgContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code eqOrne}
+	 * Enter a parse tree produced by the {@code minus}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterEqOrne(CGameParser.EqOrneContext ctx);
+	void enterMinus(CGameParser.MinusContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code eqOrne}
+	 * Exit a parse tree produced by the {@code minus}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitEqOrne(CGameParser.EqOrneContext ctx);
+	void exitMinus(CGameParser.MinusContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code parens}
 	 * labeled alternative in {@link CGameParser#expression}.
@@ -42,17 +42,17 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitParens(CGameParser.ParensContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code func}
+	 * Enter a parse tree produced by the {@code negation}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunc(CGameParser.FuncContext ctx);
+	void enterNegation(CGameParser.NegationContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code func}
+	 * Exit a parse tree produced by the {@code negation}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunc(CGameParser.FuncContext ctx);
+	void exitNegation(CGameParser.NegationContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code decl}
 	 * labeled alternative in {@link CGameParser#expression}.
@@ -65,6 +65,30 @@ public interface CGameListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDecl(CGameParser.DeclContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code grp}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGrp(CGameParser.GrpContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code grp}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGrp(CGameParser.GrpContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(CGameParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(CGameParser.BoolContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code MulDiv}
 	 * labeled alternative in {@link CGameParser#expression}.
@@ -102,17 +126,17 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitNum(CGameParser.NumContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code GtLtGeLe}
+	 * Enter a parse tree produced by the {@code theOr}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	void enterTheOr(CGameParser.TheOrContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code GtLtGeLe}
+	 * Exit a parse tree produced by the {@code theOr}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	void exitTheOr(CGameParser.TheOrContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ternaryOpt}
 	 * labeled alternative in {@link CGameParser#expression}.
@@ -126,6 +150,102 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitTernaryOpt(CGameParser.TernaryOptContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code forctrl}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterForctrl(CGameParser.ForctrlContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code forctrl}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitForctrl(CGameParser.ForctrlContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ifctrl}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfctrl(CGameParser.IfctrlContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ifctrl}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfctrl(CGameParser.IfctrlContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code eqOrne}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqOrne(CGameParser.EqOrneContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code eqOrne}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqOrne(CGameParser.EqOrneContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code newline}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNewline(CGameParser.NewlineContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code newline}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNewline(CGameParser.NewlineContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code func}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunc(CGameParser.FuncContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code func}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunc(CGameParser.FuncContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code theWith}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterTheWith(CGameParser.TheWithContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code theWith}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitTheWith(CGameParser.TheWithContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code codeBlock}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterCodeBlock(CGameParser.CodeBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code codeBlock}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitCodeBlock(CGameParser.CodeBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code GtLtGeLe}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code GtLtGeLe}
+	 * labeled alternative in {@link CGameParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code id}
 	 * labeled alternative in {@link CGameParser#expression}.
 	 * @param ctx the parse tree
@@ -138,6 +258,36 @@ public interface CGameListener extends ParseTreeListener {
 	 */
 	void exitId(CGameParser.IdContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CGameParser#ifControl}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfControl(CGameParser.IfControlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CGameParser#ifControl}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfControl(CGameParser.IfControlContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CGameParser#forControl}.
+	 * @param ctx the parse tree
+	 */
+	void enterForControl(CGameParser.ForControlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CGameParser#forControl}.
+	 * @param ctx the parse tree
+	 */
+	void exitForControl(CGameParser.ForControlContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CGameParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement(CGameParser.StatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CGameParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement(CGameParser.StatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CGameParser#declare}.
 	 * @param ctx the parse tree
 	 */
@@ -147,6 +297,16 @@ public interface CGameListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDeclare(CGameParser.DeclareContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CGameParser#group}.
+	 * @param ctx the parse tree
+	 */
+	void enterGroup(CGameParser.GroupContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CGameParser#group}.
+	 * @param ctx the parse tree
+	 */
+	void exitGroup(CGameParser.GroupContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CGameParser#function}.
 	 * @param ctx the parse tree

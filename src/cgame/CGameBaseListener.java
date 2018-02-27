@@ -28,13 +28,13 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEqOrne(CGameParser.EqOrneContext ctx) { }
+	@Override public void enterMinus(CGameParser.MinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEqOrne(CGameParser.EqOrneContext ctx) { }
+	@Override public void exitMinus(CGameParser.MinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -52,13 +52,13 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunc(CGameParser.FuncContext ctx) { }
+	@Override public void enterNegation(CGameParser.NegationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunc(CGameParser.FuncContext ctx) { }
+	@Override public void exitNegation(CGameParser.NegationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -71,6 +71,30 @@ public class CGameBaseListener implements CGameListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDecl(CGameParser.DeclContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGrp(CGameParser.GrpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGrp(CGameParser.GrpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(CGameParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(CGameParser.BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -112,13 +136,13 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	@Override public void enterTheOr(CGameParser.TheOrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	@Override public void exitTheOr(CGameParser.TheOrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,6 +160,102 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterForctrl(CGameParser.ForctrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForctrl(CGameParser.ForctrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfctrl(CGameParser.IfctrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfctrl(CGameParser.IfctrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEqOrne(CGameParser.EqOrneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEqOrne(CGameParser.EqOrneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNewline(CGameParser.NewlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNewline(CGameParser.NewlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFunc(CGameParser.FuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunc(CGameParser.FuncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTheWith(CGameParser.TheWithContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTheWith(CGameParser.TheWithContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCodeBlock(CGameParser.CodeBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCodeBlock(CGameParser.CodeBlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGtLtGeLe(CGameParser.GtLtGeLeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterId(CGameParser.IdContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -148,6 +268,42 @@ public class CGameBaseListener implements CGameListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIfControl(CGameParser.IfControlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfControl(CGameParser.IfControlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForControl(CGameParser.ForControlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForControl(CGameParser.ForControlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatement(CGameParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatement(CGameParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDeclare(CGameParser.DeclareContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -155,6 +311,18 @@ public class CGameBaseListener implements CGameListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDeclare(CGameParser.DeclareContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGroup(CGameParser.GroupContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGroup(CGameParser.GroupContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
